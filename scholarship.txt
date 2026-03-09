@@ -1,0 +1,18 @@
+Name: Japji
+Marks: 90
+Income: ₹20000
+Scholarship: ₹50000
+-----------------------------
+
+Name: Alex
+Marks: 80
+Income: ₹3000
+Scholarship: ₹20000
+-----------------------------
+
+Name: Japji
+Marks: 90
+Income: ₹7000
+Scholarship: ₹50000
+-----------------------------
+
