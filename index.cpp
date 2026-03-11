@@ -137,7 +137,13 @@ int main(){
         cout << "4. Exit\n";
 
         cout << "Enter choice: ";
-        cin >> choice;
+        
+        if(!(cin >> choice)){
+            cout << "Invalid Input!! Please enter a valid number.";
+            cin.clear();
+            cin.ignore(1000, '\n');
+            continue;
+        };
 
         switch(choice){
 
