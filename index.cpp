@@ -3,7 +3,8 @@
 using namespace std;
 
 // Class to store student information
-class Student{
+class Student
+{
 private:
     string name;
     float marks;
@@ -11,9 +12,9 @@ private:
     int scholarship;
 
 public:
-
     // Function to enter student details
-    void getDetails(){
+    void getDetails()
+    {
         cin.ignore();
 
         cout << "Enter Student Name: ";
@@ -30,24 +31,28 @@ public:
     }
 
     // Function to calculate scholarship eligibility
-    void checkEligibility(){
-        if(income <= 200000){
-            if(marks >= 90)
+    void checkEligibility()
+    {
+        if (income <= 200000)
+        {
+            if (marks >= 90)
                 scholarship = 50000;
-            else if(marks >= 85)
+            else if (marks >= 85)
                 scholarship = 30000;
-            else if(marks >= 80)
+            else if (marks >= 80)
                 scholarship = 20000;
             else
                 scholarship = 0;
         }
-        else{
+        else
+        {
             scholarship = 0;
         }
     }
 
     // Function to save data into file
-    void saveToFile(){
+    void saveToFile()
+    {
         ofstream file("students.txt", ios::app);
 
         file << name << endl;
@@ -61,7 +66,8 @@ public:
     }
 
     // Function to display all records from file
-    void displayRecords(){
+    void displayRecords()
+    {
         ifstream file("students.txt");
 
         string name;
@@ -70,12 +76,13 @@ public:
 
         cout << "\n---- All Student Records ----\n";
 
-        while(file >> name >> marks >> income >> scholarship){
+        while (file >> name >> marks >> income >> scholarship)
+        {
             cout << "Name: " << name << endl;
             cout << "Marks: " << marks << endl;
             cout << "Income: " << income << endl;
 
-            if(scholarship > 0)
+            if (scholarship > 0)
                 cout << "Scholarship: ₹" << scholarship << endl;
             else
                 cout << "Scholarship: Not Eligible\n";
@@ -87,7 +94,8 @@ public:
     }
 
     // Function to search student by name
-    void searchStudent(){
+    void searchStudent()
+    {
         ifstream file("students.txt");
 
         string searchName;
@@ -99,14 +107,16 @@ public:
         cout << "Enter student name to search: ";
         cin >> searchName;
 
-        while(file >> name >> marks >> income >> scholarship){
-            if(name == searchName){
+        while (file >> name >> marks >> income >> scholarship)
+        {
+            if (name == searchName)
+            {
                 cout << "\nStudent Found\n";
                 cout << "Name: " << name << endl;
                 cout << "Marks: " << marks << endl;
                 cout << "Income: " << income << endl;
 
-                if(scholarship > 0)
+                if (scholarship > 0)
                     cout << "Scholarship: ₹" << scholarship << endl;
                 else
                     cout << "Scholarship: Not Eligible\n";
@@ -116,7 +126,8 @@ public:
             }
         }
 
-        if(!found){
+        if (!found)
+        {
             cout << "Student not found.\n";
         }
 
@@ -124,12 +135,14 @@ public:
     }
 };
 
-int main(){
+int main()
+{
 
     Student s;
     int choice;
 
-    do{
+    do
+    {
         cout << "\n---- Scholarship Management System ----\n";
         cout << "1. Add Student\n";
         cout << "2. Display All Students\n";
@@ -137,37 +150,38 @@ int main(){
         cout << "4. Exit\n";
 
         cout << "Enter choice: ";
-        
-        if(!(cin >> choice)){
-            cout << "Invalid Input!! Please enter a valid number.";
+
+        while (!(cin >> choice))
+        {
+            cout << "Invalid Input!! Please enter a valid number: ";
             cin.clear();
             cin.ignore(1000, '\n');
-            continue;
-        };
-
-        switch(choice){
-
-            case 1:
-                s.getDetails();
-                break;
-
-            case 2:
-                s.displayRecords();
-                break;
-
-            case 3:
-                s.searchStudent();
-                break;
-
-            case 4:
-                cout << "Exiting program...\n";
-                break;
-
-            default:
-                cout << "Invalid choice!\n";
         }
 
-    }while(choice != 4);
+        switch (choice)
+        {
+
+        case 1:
+            s.getDetails();
+            break;
+
+        case 2:
+            s.displayRecords();
+            break;
+
+        case 3:
+            s.searchStudent();
+            break;
+
+        case 4:
+            cout << "Exiting program...\n";
+            break;
+
+        default:
+            cout << "Invalid choice!\n";
+        }
+
+    } while (choice != 4);
 
     return 0;
 }
